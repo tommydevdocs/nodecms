@@ -1,0 +1,25 @@
+extends layout
+block head
+script(type='email').
+    validator.isEmail('foo@bar.com'); //=> true
+
+block content
+  .container
+        .col-md-6.col-md-offset-3
+            .forms
+                form(class='form-group', method='post', enctype='application/json')
+                    if errors
+                        each error in errors
+                            #error #{error}
+                    h1 Signup
+                    input(type='text', name='userName', class='form-control',  placeholder='Username')
+                    br
+                    input(type='password', name='password', class='form-control', id='password', placeholder='Password', value='')
+                    br
+                    input(type='text', name='email', class='form-control', id='email', placeholder='Email Address', value='')
+                    br
+                    input(type='text', name='userRole', Value='0', hidden)
+                    button(type='submit', class='btn btn-primary XPButton') Sign Up
+                    a(href='cms/users/login')
+                        button(type='button', class='btn XPButton') Back
+        

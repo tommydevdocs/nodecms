@@ -1,0 +1,87 @@
+extends ../layout
+block head.
+    
+block content
+    #page-wrapper
+        .container-fluid
+            .row
+              .col-lg-12
+                h1.page-header
+                  | Dashboard 
+                  small Statistics Overview
+                |                         
+                ol.breadcrumb
+                  li.active
+                    i.fa.fa-dashboard
+                    |  Dashboard
+            // /.row
+            .main
+            p #{title}
+                if posts
+                    if  (posts.length)
+                        table(class='table table-responsive table-hover' style='table-layout:fixed;')
+                            tr
+                                th id
+                                th title
+                                th summary
+                                th entry
+                                th author
+                                th dateCreated
+                                th dateUpdated
+                                th publishOn
+                                th published
+                                th 
+                                    th
+                                        td Edit
+                                        td View
+                                        td Delete
+                            for post in posts
+                                tr
+                                    td  #{post.post_id}
+                                    td  #{post.title}
+                                    td  #{post.summary}
+                                    td  #{post.entry}
+                                    td  #{post.author}
+                                    td  #{post.dateCreated}
+                                    td  #{post.dateUpdated}
+                                    td  #{post.publishOn}
+                                    td  #{post.published}
+                                    td
+                                       th
+                                            td
+                                                a(href='/cms/posts/update/#{post.post_id}')
+                                                    span(class='glyphicon glyphicon-edit text-info')
+                                            td
+                                                a(href='/blog/#{post.post_id}')
+                                                    span(class='glyphicon glyphicon-eye-open text-success')
+                                            td
+                                                a(type='button', data-toggle='modal', data-target='#myModal')
+                                                    span(class='glyphicon glyphicon-remove text-danger')
+                                                // Modal
+                                                #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+                                                  .modal-dialog(role='document')
+                                                    .modal-content
+                                                      .modal-header
+                                                        button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                                          span(aria-hidden='true') ×
+                                                        h4#myModalLabel.modal-title Please confirm
+                                                      .modal-body
+                                                        h3 Are you sure you want to delete this post?
+                                                      .modal-footer
+                                                        button.btn.btn-default(type='button', data-dismiss='modal') Close
+                                                        a(type='button' class='btn btn-danger' href='/cms/posts/delete/#{post.post_id}') Delete
+                                                    
+                                            script.
+                                                    $('#myModal').on('shown.bs.modal', function () {
+                                                      $('#myInput').focus()
+                                                    })                                               
+                                                                                                                                
+                                              
+                                                             
+                                    
+                else
+                    h1  No posts found.
+                    
+                a(href="/cms")
+                    button(class="btn btn-primary XPButton" type='button') Go Back
+                        

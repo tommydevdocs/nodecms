@@ -1,0 +1,35 @@
+extends ../layout
+
+block content
+ #page-wrapper
+        .container-fluid
+            .row
+              .col-lg-12
+                h1.page-header
+                  | Dashboard 
+                  small Statistics Overview
+                |                         
+                ol.breadcrumb
+                  li.active
+                    i.fa.fa-dashboard
+                    |  Dashboard
+            // /.row
+            .main
+                div(class='col-md-10')
+                    h1= title
+                    if users
+                        form(class='XPForm', method='post', enctype='application/json')
+                            table(class='table table-responsive')
+                                tr
+                                    th Username
+                                    th Email
+                                    th 
+                                each user in users
+                                    tr
+                                        td #{user.username}
+                                        td #{user.email}
+                                        td 
+                                            a(href='cms/users/delete/#{user.user_id}')
+                                                span(class='glyphicon glyphicon-remove text-danger')
+                                    
+                                

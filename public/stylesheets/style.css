@@ -1,0 +1,56 @@
+   html {
+    font-family: 'Slabo 27px', serif;
+    }
+    body {
+    font-family: 'Slabo 27px', serif;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+    font-family: 'Slabo 27px', serif;
+    color: #212121;
+    }
+    a {
+    color: #727272;
+    }
+    button, .button {
+    background-color: #E64A19;
+    border-color: #007095;
+    color: #FFF;
+    }
+    
+    #credits
+    {
+        font-size: 10px;
+    }
+    
+    
+    /* SITE */
+    .dark-primary-color    { background: #AFB42B; }
+    .default-primary-color { background: #CDDC39; }
+    .light-primary-color   { background: #F0F4C3; }
+    .text-primary-color    { color: #212121; }
+    .accent-color          { background: #536DFE; }
+    .primary-text-color    { color: #212121; }
+    .secondary-text-color  { color: #727272; }
+    .divider-color         { border-color: #B6B6B6; }
+    
+    
+    /* DASHBOARD COLORS */
+
+.dark-primary-color    { background: #0288D1; }
+.default-primary-color { background: #03A9F4; }
+.light-primary-color   { background: #B3E5FC; }
+.text-primary-color    { color: #FFFFFF; }
+.accent-color          { background: #CDDC39; }
+.primary-text-color    { color: #212121; }
+.secondary-text-color  { color: #727272; }
+.divider-color         { border-color: #B6B6B6; }
+
+    .btn-success           { background: #0288D1;border-color: #0288D1; }
+    .btn-success:hover     { background: #03A9F4;border-color: #03A9F4; }
+    .btn-danger           { background: #727272;border-color: #727272; }
+    .btn-danger:hover     { background: #B6B6B6;border-color: #B6B6B6; }

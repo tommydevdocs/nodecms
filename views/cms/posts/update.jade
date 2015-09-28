@@ -1,0 +1,62 @@
+extends ../layout
+block head
+    script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js')
+    script(type='text/javascript', src='/moment/min/moment.min.js')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js')
+    script(type='text/javascript', src='/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js')
+    link(rel='stylesheet', href='/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+block content
+    #page-wrapper
+        .container-fluid
+            if posts
+                if  (posts.length)
+                    .forms
+                        form(class='form-group', method='post', enctype='application/json')
+                            for post in posts
+                                h1 New Concert
+                                    .panel.panel-default
+                                      .panel-heading
+                                        h3.panel-title Update Details
+                                      .panel-body
+                                        br
+                                        | Title
+                                        input(type='text', name='title', class='form-control',  placeholder='Title' value='#{post.title}')
+                                        br
+                                        | Summary
+                                        input(type='text', name='summary', class='form-control', value='#{post.summary}')
+                                        br
+                                        | Where
+                                        textarea(type='text', name='entry', class='form-control', id='entry', rows='3' value='') #{post.entry}
+                                        br
+                                        input(type='text', name='location',  id='location' class='form-control',  placeholder='Google maps link' value='#{post.location}')
+                                    .panel.panel-default
+                                      .panel-heading
+                                        h3.panel-title Update the date and time of the concert.
+                                      .panel-body
+                                        .col-sm-6
+                                            .form-group
+                                            #datetimepicker1.input-group.date
+                                                input.form-control(type='text' name='dateCreated' id='dateCreated' value='!{post.dateCreated}')
+                                                span.input-group-addon
+                                                  span.glyphicon.glyphicon-calendar
+                                        .col-sm-6
+                                            .form-group
+                                            #datetimepicker2.input-group.date
+                                                input.form-control(type='text' name='datePosted' id='datePosted' placeholder='End Time' value='!{post.datePosted}')
+                                                span.input-group-addon
+                                                  span.glyphicon.glyphicon-calendar
+                                script.
+                                  $(function () {
+                                  $('#datetimepicker1').datetimepicker();
+                                  });
+                                script.
+                                  $(function () {
+                                  $('#datetimepicker2').datetimepicker();
+                                  });
+                          
+                              div.pull-right
+                                  button(type='submit', class='btn btn-success') Post
+                                  a(type='button' href='/', class='btn btn-danger') Cancel
+               

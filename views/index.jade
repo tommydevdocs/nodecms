@@ -1,0 +1,103 @@
+doctype html
+//if IE 9
+  html.lt-ie10(lang='en')  
+html.no-js(lang='en', data-useragent='Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title D. Devisscher | Musician
+    meta(name='description', content='Documentation and reference library for ZURB Foundation. JavaScript, CSS, components, grid and more.')
+    meta(name='author', content='ZURB, inc. ZURB network also includes zurb.com')
+    meta(name='copyright', content='ZURB, inc. Copyright (c) 2015')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/css/foundation.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/js/vendor/modernizr.js')
+    link(href='https://fonts.googleapis.com/css?family=Slabo+27px', rel='stylesheet', type='text/css')
+    script.
+      moment().format('MMMM Do YYYY, h:mm:ss a');
+  body
+    .row
+      .large-3.columns
+        h1 Devisscher.ca
+      .large-9.columns
+        ul.button-group.right
+          li
+            a.button(href='#', data-reveal-id='myModal') Contact
+     #myModal.reveal-modal(data-reveal='', aria-labelledby='modalTitle', aria-hidden='true', role='dialog')
+      h2#modalTitle Contact David Devisscher
+      p.lead About shows, music and more.
+      form
+        input(type='text' placeholder='Name')
+        input(type='text' placeholder='Email')
+        textarea(type='text' placeholder='Message' rows='5')
+        input.button(type='submit')
+      a.close-reveal-modal(aria-label='Close') ×
+    .row
+      .large-12.columns
+        img(src='/images/sax.png', width='100%')
+        hr
+    .row
+      .large-6.columns
+        figure
+          img(src='/images/lifejazz.jpg', alt="Life is a lot like Jazz, it's better when you improvize")
+          figcaption Photo Credits: Costas Theoharis
+      .large-6.columns
+         h1 Upcoming Shows
+          if posts
+            if  (posts.length)
+              for post in posts
+                h3 #{post.title}
+                |!{post.summary} 
+                a(href='#{post.location}' target='_blank')
+                  p Location: !{post.entry} 
+                
+                p 
+                | #{post.dateCreated1} 
+                br 
+                | #{post.dateCreated} - #{post.datePosted}
+                hr
+       .large-12.columns
+       hr
+
+    .row
+      .large-8.columns
+        h4 Welcome to D. Devisscher's website.
+        p
+          | D. Devisscher has played music all over the world during official ceremonies and events. Now that he's retired, he enjoys playing music with friends and family at local pubs. Catch one of his concerts to feel the passion that fuels his love for music. 
+      .large-4.columns
+        img(src='/images/daveandjohn.jpg')
+    footer.row
+      .large-12.columns
+        hr
+        .row
+          .large-6.columns
+            p © Copyright David Devisscher.
+          .large-6.columns
+            ul.inline-list.right
+              li
+                if req && req.sess.userName
+                  li
+                      a(href="cms/users/logout") Hi #{req.sess.userName}, click here to logout.
+                  li    
+                      a(href="/cms") Dashboard
+                else
+                  li
+                    a(href="cms/users/login") Login
+          .large-12.columns
+            p#credits.text-center.small This website was built with <3 by Thomas Devisscher using Node.js
+    script.
+      document.write('<script src=js/vendor/' +
+      ('__proto__' in {} ? 'zepto' : 'jquery') +
+      '.js><\\/script>')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/js/vendor/jquery.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/js/foundation.min.js')
+    script.
+      $(document).foundation();
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/js/vendor/jquery.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/js/foundation.min.js')
+    script.
+      $(document).foundation();
+      var doc = document.documentElement;
+      doc.setAttribute('data-useragent', navigator.userAgent);
+
+   

@@ -1,0 +1,38 @@
+extends ../layout
+block head
+
+block content
+ #page-wrapper
+        .container-fluid
+            .row
+              .col-lg-12
+                h1.page-header
+                  | Dashboard 
+                  small Statistics Overview
+                |                         
+                ol.breadcrumb
+                  li.active
+                    i.fa.fa-dashboard
+                    |  Dashboard
+            .main
+                if histories
+                    if  (histories.length)
+                        table(class='table table-responsive table-hover' style='table-layout:fixed;')
+                            tr
+                                tr
+                                    td username
+                                    td action
+                                    td details
+                                    td history.date
+                            each history in histories
+                                      tr
+                                        td #{history.username}
+                                        td #{history.action}
+                                        td #{history.details}
+                                        td #{history.date}
+                else
+                    h1  No users found.
+                    
+                a(href="/")
+                    button(class="btn btn-primary XPButton" type='button') Go Back
+                
